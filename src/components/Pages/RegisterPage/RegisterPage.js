@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+//import componets to be used on this page
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -14,11 +18,16 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
 
+    //Things to check before dispatching to the server
+    //input validation should be performed here for creating a user
     if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
           username: this.state.username,
+          email: this.state.email,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
           password: this.state.password,
         },
       });
@@ -44,6 +53,28 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
+
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+        
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
