@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 class RegisterPage extends Component {
   state = {
     username: '',
+    email: '',
+    first_name: '',
+    last_name: '',
     password: '',
+    confirm_pwd: '',
   };
 
   registerUser = (event) => {

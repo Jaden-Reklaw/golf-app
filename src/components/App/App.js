@@ -13,9 +13,9 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import AboutPage from '../Pages/AboutPage/AboutPage';
+import UserPage from '../Pages/UserPage/UserPage';
+import InfoPage from '../Pages/InfoPage/InfoPage';
 
 import './App.css';
 
