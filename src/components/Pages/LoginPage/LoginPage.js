@@ -8,10 +8,22 @@ class LoginPage extends Component {
   state = {
     username: '',
     password: '',
+    validated: false,
   };
 
+  setValidated = () => {
+    this.setState({validated: true});
+  };
+
+
   login = (event) => {
-    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    this.setValidated();
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
@@ -45,7 +57,7 @@ class LoginPage extends Component {
         )}
         <Card>
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>Login Page</Card.Title>
             <Form onSubmit={this.login}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
