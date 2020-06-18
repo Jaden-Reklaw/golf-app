@@ -58,32 +58,41 @@ class LoginPage extends Component {
         <Card>
           <Card.Body>
             <Card.Title>Login Page</Card.Title>
-            <Form onSubmit={this.login}>
+            <Form
+              onSubmit={this.login}
+              noValidate
+              validated= {this.state.validated}
+            >
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
-                <Form.Control 
+                <Form.Control
+                  required 
                   type="text" 
                   placeholder="Username" 
                   value={this.state.username}
                   onChange={this.handleInputChangeFor('username')}
                 />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid username.
+              </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control 
+                <Form.Control
+                  required
                   type="password" 
                   placeholder="Password" 
                   value={this.state.password}
                   onChange={this.handleInputChangeFor('password')}
                 />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid password.
+              </Form.Control.Feedback>
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
               </Button>
-            </Form>
+              </Form>
           </Card.Body>
         </Card>
         <center>
@@ -95,7 +104,7 @@ class LoginPage extends Component {
             Register
           </button>
         </center>
-      </div>
+    </div>
     );
   }
 }
